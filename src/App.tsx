@@ -277,20 +277,25 @@ const Examples = () => {
     personality: '',
     mes_example: "{{user}}: You're cool.\n{{char}}: Thanks!",
   }
-  const v2Card: Cards.V2 = {
+  const v2CardNoCharacterBook: Cards.V2 = {
     spec: 'chara_card_v2',
     spec_version: '2.0',
     data: {
-      name: 'Sui the card test',
-      first_mes: "Hi! I'm Sui.",
-      scenario: 'Sui tells a nice story',
-      description: '{{char}} is very happy.',
-      personality: '',
-      mes_example: "{{user}}: You're cool.\n{{char}}: Thanks!",
+      ...v1Card,
       creator_notes: 'Sui is nice',
       system_prompt: "Enter roleplay mode. Write {{char}}'s next reply.",
       post_history_instructions: 'Your reply must end with "desu".',
       alternate_greetings: ["Hey, what's up?", 'Hey there.'],
+      tags: ['female', 'nice'],
+      creator: 'malfoy',
+      character_version: '1',
+      extensions: {},
+    },
+  }
+  const v2Card: Cards.V2 = {
+    ...v2CardNoCharacterBook,
+    data: {
+      ...v2CardNoCharacterBook.data,
       character_book: {
         name: 'the dummy book',
         description: 'dummy book',
@@ -307,30 +312,6 @@ const Examples = () => {
         ],
         extensions: {},
       },
-      tags: ['female', 'nice'],
-      creator: 'malfoy',
-      character_version: '1',
-      extensions: {},
-    },
-  }
-  const v2CardNoCharacterBook: Cards.V2 = {
-    spec: 'chara_card_v2',
-    spec_version: '2.0',
-    data: {
-      name: 'Sui the card test',
-      first_mes: "Hi! I'm Sui.",
-      scenario: 'Sui tells a nice story',
-      description: '{{char}} is very happy.',
-      personality: '',
-      mes_example: "{{user}}: You're cool.\n{{char}}: Thanks!",
-      creator_notes: 'Sui is nice',
-      system_prompt: "Enter roleplay mode. Write {{char}}'s next reply.",
-      post_history_instructions: 'Your reply must end with "desu".',
-      alternate_greetings: ["Hey, what's up?", 'Hey there.'],
-      tags: ['female', 'nice'],
-      creator: 'malfoy',
-      character_version: '1',
-      extensions: {},
     },
   }
   return (
